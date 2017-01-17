@@ -1,0 +1,20 @@
+{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-ui-router": "latest",
+    "angular-animate": "1.5.8",
+    "angular-material": "^1.1.1",
+    "animate.css": "^3.5.2",
+    "angularAnimation": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8"
+  }
+}

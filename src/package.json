@@ -1,0 +1,20 @@
+{
+  "name": "angularAnimation",
+  "version": "0.0.1",
+  "description": "angularAnimation is an animation engine based on Animate.css, compatible with Angular Animate.",
+  "repository": "https://github.com/JessDotJS/angular-animation",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-ignore": "^2.0.2",
+    "gulp-jshint": "^2.0.4",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "run-sequence": "^1.2.2"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Angular-Animation</title>
+    <meta name="description" content="https://github.com/JessDotJS/angular-animation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Icons CDNS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="vendors/font-awesome-4.6.3/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="vendors/bower_components/angularAnimation/dist/angularAnimation.css">
+
+    <link rel="stylesheet" href="vendors/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+
+</head>
+<body style="overflow-y: hidden;height:100%;">
+
+<div layout="row" layout-fill ng-cloak>
+    <div>
+        <md-sidenav class="md-sidenav-left"
+                    md-whiteframe="10"
+                    md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-md')" style="height:100%; z-index: 100">
+            <md-content>
+                <div layout="column">
+                    <md-list flex>
+                        <md-subheader class="md-no-sticky">Angular Animation</md-subheader>
+                        <md-list-item ui-sref="theProject" ui-sref-active="active">
+                            <div layout="row"
+                                 layout-align="center center">
+                                <md-icon md-font-icon="fa-github" class="fa" style="font-size:19px;" alt="github"></md-icon>
+                                <p style="margin-left:10px;">The Project</p>
+                            </div>
+                        </md-list-item>
+
+                        <md-list-item ui-sref="gettingStarted" ui-sref-active="active">
+                            <div layout="row"
+                                 layout-align="center center">
+                                <md-icon aria-label="airplanemode_active"
+                                         class="material-icons">airplanemode_active</md-icon>
+                                <p style="margin-left:10px;">Getting Started</p>
+                            </div>
+                        </md-list-item>
+                        <md-subheader class="md-no-sticky">Animations</md-subheader>
+                        <md-list-item   ui-sref="samples" ui-sref-active="active">
+                            <div layout="row"
+                                 layout-align="center center">
+                                <md-icon aria-label="code"
+                                         class="material-icons">code</md-icon>
+                                <p style="margin-left:10px;">Samples</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-content>
+        </md-sidenav>
+    </div>
+    <div flex>
+        <div layout="column" layout-fill>
+            <md-toolbar md-whiteframe="5" class="heading-toolbar md-hue-3">
+                <div class="md-toolbar-tools ">
+                    <div layout="row" layout-align="center center" flex>
+                        <h2><span>{{$root.routeName}}</span></h2>
+                        <span flex></span>
+                        <md-button  ng-click="loadGithub()"
+                                   class="md-icon-button"
+                                   aria-label="Menu">
+                            <md-tooltip md-direction="left" class="material-tooltip">View on Github</md-tooltip>
+                            <md-icon md-font-icon="fa-github" class="fa fa-2x" alt="github"></md-icon>
+                        </md-button>
+                    </div>
+                </div>
+            </md-toolbar>
+
+            <div class="views-container" flex>
+                <div ui-view
+                     animation="'auto'"
+                     in="'zoomInDown'"
+                     out="'zoomOutDown'"
+                     flex></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type='text/javascript' src="vendors/bower_components/angular/angular.js"></script>
+<script type='text/javascript' src="vendors/bower_components/angular-material/angular-material.min.js"></script>
+<script type='text/javascript' src="vendors/bower_components/angular-animate/angular-animate.min.js"></script>
+<script type='text/javascript' src="vendors/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type='text/javascript' src="vendors/bower_components/angular-aria/angular-aria.min.js"></script>
+<script type='text/javascript' src="vendors/bower_components/angularAnimation/dist/angularAnimation.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+<script type='text/javascript' src="app.js"></script>
+
+
+
+<script type='text/javascript' src="components/samples/sampleSelector.js"></script>
+<script type='text/javascript' src="components/samples/samples.js"></script>
+</body>
+</html>

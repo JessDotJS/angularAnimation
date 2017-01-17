@@ -1,0 +1,156 @@
+/*
+* angularAnimation
+* V 1.0.0
+*/
+
+
+/*
+** Animations Related
+*/
+$animations: (
+        entrances: ('bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp',
+        'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight',
+        'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'flipInX', 'flipInY',
+        'lightSpeedIn', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft',
+        'rotateInUpRight', 'slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight',
+        'zoomIn', 'zoomInDown', 'zoomInLeft', 'zoomInRight', 'zoomInUp', 'rollIn'),
+        exits: ('bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp',
+        'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight',
+        'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'flipOutX', 'flipOutY',
+        'lightSpeedOut', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft',
+        'rotateOutUpRight', 'slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight',
+        'zoomOut', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight', 'zoomOutUp', 'rollOut'),
+        statics: ('bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'jello', 'flip')
+);
+$inDuration: 1;
+$outDuration: 1;
+
+$entranceAnimationsList: map-get($animations, 'entrances');
+$exitAnimationsList: map-get($animations, 'exits');
+$staticAnimationsList: map-get($animations, 'statics');
+
+
+//Entrance Classes
+@for $i from 1 to length($entranceAnimationsList) {
+
+  $inAnimationName: nth($entranceAnimationsList, $i);
+  $outAnimationName: nth($exitAnimationsList, $i);
+
+  .#{$inAnimationName}{
+    animation: #{$inAnimationName};
+  }
+  .#{$inAnimationName}.ng-leave,
+  .#{$inAnimationName}.ng-hide-add{
+    animation: #{$outAnimationName} #{$outDuration}s;
+  }
+  .#{$inAnimationName}.ng-enter,
+  .#{$inAnimationName}.ng-hide-remove{
+    animation: #{$inAnimationName} #{$inDuration}s;
+  }
+
+  /*Passive*/
+  .#{$inAnimationName}-passive.ng-leave,
+  .#{$inAnimationName}-passive.ng-hide-add{
+    animation: #{$outAnimationName} #{$outDuration}s;
+  }
+  .#{$inAnimationName}-passive.ng-enter,
+  .#{$inAnimationName}-passive.ng-hide-remove{
+    animation: #{$inAnimationName} #{$inDuration}s;
+  }
+}
+
+//Exit Classes
+@for $i from 1 to length($staticAnimationsList) {
+  $outAnimationName: nth($exitAnimationsList, $i);
+  $inAnimationName: nth($entranceAnimationsList, $i);
+
+
+  .#{$outAnimationName}{
+    animation: #{$outAnimationName};
+  }
+  .#{$outAnimationName}.ng-leave,
+  .#{$outAnimationName}.ng-hide-add{
+    animation: #{$outAnimationName} #{$outDuration}s;
+  }
+  .#{$outAnimationName}.ng-enter,
+  .#{$outAnimationName}.ng-hide-remove{
+    animation: #{$inAnimationName} #{$inDuration}s;
+  }
+
+  /*Passive*/
+  .#{$outAnimationName}-passive.ng-leave,
+  .#{$outAnimationName}-passive.ng-hide-add{
+    animation: #{$outAnimationName} #{$outDuration}s;
+  }
+  .#{$outAnimationName}-passive.ng-enter,
+  .#{$outAnimationName}-passive.ng-hide-remove{
+    animation: #{$inAnimationName} #{$inDuration}s;
+  }
+}
+
+
+//Static Classes
+@for $i from 1 to length($staticAnimationsList) {
+  $inAnimationName: 'fadeIn';
+  $outAnimationName: 'fadeOut';
+  $animationName: nth($staticAnimationsList, $i);
+
+
+  .#{$animationName}{
+    animation: #{$animationName};
+  }
+  .#{$animationName}.ng-leave,
+  .#{$animationName}.ng-hide-add{
+    animation: #{$outAnimationName} #{$outDuration}s;
+  }
+  .#{$animationName}.ng-enter,
+  .#{$animationName}.ng-hide-remove{
+    animation: #{$inAnimationName} #{$inDuration}s;
+  }
+}
+
+/*
+* Duration, Delay & Iteration Count Related
+*/
+
+$durationLimit: 101;
+$delayLimit: 101;
+$iterationCountLimit: 101;
+
+@for $i from 0 to $durationLimit {
+  .duration-#{$i}{
+    -webkit-animation-duration: #{$i/10}s;
+    -moz-animation-duration: #{$i/10}s;
+    -ms-animation-duration: #{$i/10}s;
+    -o-animation-duration: #{$i/10}s;
+  }
+}
+
+@for $i from 0 to $delayLimit {
+  .delay-#{$i}{
+    -webkit-animation-delay: #{$i/10}s;
+    -moz-animation-delay: #{$i/10}s;
+    -ms-animation-delay: #{$i/10}s;
+    -o-animation-delay: #{$i/10}s;
+  }
+}
+
+@for $i from 0 to $iterationCountLimit {
+  .iteration-count-#{$i}{
+    -webkit-animation-iteration-count: #{$i};
+    -moz-animation-iteration-count: #{$i};
+    -ms-animation-iteration-count: #{$i};
+    -o-animation-iteration-count: #{$i};
+  }
+}
+.iteration-count-infinite{
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+}
+
+
+.visibility-hidden{
+  visibility: hidden;
+}

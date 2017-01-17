@@ -1,0 +1,15 @@
+.views-container{
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+.content-container{
+    padding:25px;
+    margin:35px;
+}
+
+
+.active{
+    background: #f0f0f0;
+}

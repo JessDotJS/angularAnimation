@@ -1,0 +1,224 @@
+<div layout="row"
+     layout-fill
+     layout-align="center center"
+     style="margin-top:40px;"
+     ng-if="sectionName == 'auto'">
+    <div flex="80" md-whiteframe="5" style="background:white;" class="md-padding">
+        <div layout="row" flex="100">
+            <div layout="column" flex style="min-height:450px;">
+                <div layout="row" layout-align="center center" flex>
+                    <div layout="column" flex="70" class="md-padding">
+                        <h2 class="md-title" style="text-transform: capitalize">{{sectionName}} animations</h2>
+
+                        <div layout="row" layout-align="center center" flex="40">
+                            <md-input-container flex>
+                                <label>Auto Animation</label>
+                                <md-select ng-model="sample.animation.auto.prefix">
+                                    <md-option ng-repeat="auto in sample.animationList.entrances"
+                                               ng-value="auto">{{auto}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+                    <div flex="30">
+                        <div flex>
+                            <md-card animation="'auto'"
+                                     dynamic="true"
+                                     in="sample.animation.auto.prefix"
+                                     md-whiteframe="5">
+                                <md-card-header>
+                                    <md-card-avatar>
+                                        <img src="assets/img/male.png" alt="Logo"/>
+                                    </md-card-avatar>
+                                    <md-card-header-text>
+                                        <span class="md-title">Joshua Allen</span>
+                                        <span class="md-subhead">35 seconds ago</span>
+                                    </md-card-header-text>
+                                </md-card-header>
+                                <img ng-src="assets/img/material-design.jpg" class="md-card-image" alt="Washed Out">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Auto Animations</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div layout="row">
+            <md-button ng-disabled="isAnimating" ui-sref="samples">Back</md-button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Entrance -->
+<div layout="row"
+     layout-fill
+     layout-align="center center"
+     style="margin-top:40px;"
+     ng-if="sectionName == 'entrance'">
+    <div flex="80" md-whiteframe="5" style="background:white;" class="md-padding">
+        <div layout="row" flex="100">
+            <div layout="column" flex style="min-height:450px;">
+                <div layout="row" layout-align="center center" flex>
+                    <div layout="column" flex="70" class="md-padding">
+                        <h2 class="md-title" style="text-transform: capitalize">{{sectionName}} animations</h2>
+                        <h4 class="md-subhead" style="margin-top:0px;">
+                            IMPORTANT: The duration is measured in milliseconds, in angular-animation,
+                            1 = 100ms and the limit is 40 or 40000ms.
+                        </h4>
+                        <div layout="row" layout-align="start start">
+                            <md-input-container flex>
+                                <label>Entrance Animation</label>
+                                <md-select ng-model="sample.animation.entrance.in.prefix"  ng-disabled="isAnimating">
+                                    <md-option ng-repeat="entrance in sample.animationList.entrances"
+                                               ng-value="entrance">{{entrance}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Duration</label>
+                                <input ng-model="sample.animation.entrance.in.duration" type="number"  ng-disabled="isAnimating">
+                            </md-input-container>
+                        </div>
+
+                        <div layout="row">
+                            <md-input-container flex>
+                                <label>Exit Animation</label>
+                                <md-select ng-model="sample.animation.entrance.out.prefix"  ng-disabled="isAnimating">
+                                    <md-option ng-repeat="exit in sample.animationList.exits"
+                                               ng-value="exit">{{exit}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Duration</label>
+                                <input ng-model="sample.animation.entrance.out.duration" type="number"  ng-disabled="isAnimating">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+                    <div flex="30">
+                        <div flex>
+                            <md-card animation="'entrance'"
+                                     dynamic="true"
+                                     in="sample.animation.entrance.in.prefix"
+                                     in-duration="sample.animation.entrance.in.duration"
+                                     out="sample.animation.entrance.out.prefix"
+                                     out-duration="sample.animation.entrance.out.duration"
+                                     trigger="show"
+                                     animation-disabled="entranceDisabled"
+                                     md-whiteframe="5">
+                                <md-card-header>
+                                    <md-card-avatar>
+                                        <img src="assets/img/male2.png" alt="Logo"/>
+                                    </md-card-avatar>
+                                    <md-card-header-text>
+                                        <span class="md-title">John Doe</span>
+                                        <span class="md-subhead">15 minutes ago</span>
+                                    </md-card-header-text>
+                                </md-card-header>
+                                <img ng-src="assets/img/material-design.jpg" class="md-card-image" alt="Washed Out">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Entrance & Exit Animations</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div layout="row">
+            <md-button ng-disabled="isAnimating" ui-sref="samples">Back</md-button>
+            <span flex></span>
+            <md-button class="md-primary"
+                       ng-click="startEntrance()"
+                       ng-disabled="isAnimating || isDisabled()">Animate</md-button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Static -->
+<div layout="row"
+     layout-fill
+     layout-align="center center"
+     style="margin-top:40px;"
+     ng-if="sectionName == 'static'">
+    <div flex="80" md-whiteframe="5" style="background:white;" class="md-padding">
+        <div layout="row" flex="100">
+            <div layout="column" flex style="min-height:450px;">
+                <div layout="row" layout-align="center center" flex>
+                    <div layout="column" flex="70" class="md-padding">
+                        <h2 class="md-title" style="text-transform: capitalize">{{sectionName}} animations</h2>
+                        <h4 class="md-subhead" style="margin-top:0px;">
+                            IMPORTANT: The duration is measured in milliseconds, in angular-animation,
+                            1 = 100ms and the limit is 40 or 40000ms.
+                        </h4>
+                        <div layout="row" layout-align="center center" flex="40">
+                            <md-input-container flex>
+                                <label>Static Animation</label>
+                                <md-select ng-model="sample.animation.static.prefix"  ng-disabled="isAnimating">
+                                    <md-option ng-repeat="static in sample.animationList.statics"
+                                               ng-value="static">{{static}}</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+
+                    <div flex="30">
+                        <div flex>
+                            <md-card animation="'static'"
+                                     dynamic="true"
+                                     in="sample.animation.static.prefix"
+                                     in-duration="sample.animation.static.duration"
+                                     in-iteration-count="sample.animation.static.iterationCount"
+                                     trigger="staticAnimate"
+                                     md-whiteframe="5">
+                                <md-card-header>
+                                    <md-card-avatar>
+                                        <img src="assets/img/female.png" alt="Logo"/>
+                                    </md-card-avatar>
+                                    <md-card-header-text>
+                                        <span class="md-title">Julia Ann</span>
+                                        <span class="md-subhead">5 minutes ago</span>
+                                    </md-card-header-text>
+                                </md-card-header>
+                                <img ng-src="assets/img/material-design.jpg" class="md-card-image" alt="Washed Out">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">Static Animations</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div layout="row">
+            <md-button ng-disabled="isAnimating" ui-sref="samples">Back</md-button>
+        </div>
+    </div>
+</div>
+
